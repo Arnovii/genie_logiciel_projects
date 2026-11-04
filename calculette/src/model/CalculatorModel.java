@@ -1,11 +1,10 @@
 package model;
-import java.util.Stack;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class CalculatorModel {
 
     public Stack<Double> myStack;
-    private String accu;
 
 
     /*
@@ -13,7 +12,6 @@ public class CalculatorModel {
     */
     public CalculatorModel() {
         this.myStack = new Stack<>();
-        this.accu = "";
     }
 
 
@@ -24,9 +22,9 @@ public class CalculatorModel {
         System.out.println(this.myStack);
 
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String accu = scanner.nextLine();
 
-        return input;
+        return accu;
     }
 
     /*
@@ -129,28 +127,33 @@ public class CalculatorModel {
     */
     private Double pop() {
         Double x = this.myStack.pop();
+ 
         return x;
     }
     
 
     /*
-    I have no idea what thats supposed to do. 
+    Drops the top of the pile but doesn't.
     */
     private void drop(){
-
+        this.myStack.pop();
     }
 
     /*
     Swaps seed 1 and seed 2.
     */
     private void swap(){
+        Double x = this.myStack.pop();
+        Double y = this.myStack.pop();
 
+        this.myStack.push(x);
+        this.myStack.push(y);
     }
 
     /*
     Clears the stack.
     */
     private void clear(){
-
+        this.myStack = new Stack<>();
     }
 }
