@@ -1,5 +1,5 @@
 package model;
-import java.util.Scanner;
+import java.util.Scanner; // bound to be deleted
 import java.util.Stack;
 
 public class CalculatorModel {
@@ -16,9 +16,9 @@ public class CalculatorModel {
 
 
     /*
-    Displays current state of the stack, ask for an input, returns the String input.     
+    Displays current state of the stack, ask for an input, returns the String input. This is bound to be deleted.
     */
-    public String listen(){
+    public String listen() {
         System.out.println(this.myStack);
 
         Scanner scanner = new Scanner(System.in);
@@ -32,51 +32,31 @@ public class CalculatorModel {
     */
     public void process(String input) {
         switch (input) {
-            case "+":
-                this.add();
-                break;
-
-            case "-":
-                this.substract();
-                break;
-
-            case "*":
-                this.multiply();
-                break;
-            
-            case "/":
-                this.divide();
-                break;
-            
-            case "(-)":
-                this.opposite();
-                break;
-
-            case "pop":
-                this.pop();
-                break;
-
-            case "drop":
-                this.drop();
-                break;
-
-            case "swap":
-                this.swap();
-                break;
-
-            case "clear":
-                this.clear();
-                break;
-            
-            default:
-                this.myStack.push(Double.parseDouble(input));
+            case "+"        -> this.add();
+            case "-"        -> this.substract();
+            case "*"        -> this.multiply();
+            case "/"        -> this.divide();
+            case "(-)"      -> this.opposite();
+            case "pop"      -> this.pop();
+            case "drop"     -> this.drop();
+            case "swap"     -> this.swap();
+            case "clear"    -> this.clear();
+            default         -> this.myStack.push(Double.parseDouble(input));
         }
     }
 
     /*
+    Returns the current state of the stack.
+    */
+    public Stack getStack() {
+        return this.myStack;
+    }
+
+
+    /*
     Adds the 2 numbers on top of the stack, pops them and pushes the result.
     */
-    private void add(){
+    private void add() {
         Double x = this.myStack.pop();
         Double y = this.myStack.pop();
 
@@ -86,7 +66,7 @@ public class CalculatorModel {
     /*
     Substract the second upmost number from the top of the stack, pops them and pushes the result.
     */
-    private void substract(){
+    private void substract() {
         Double x = this.myStack.pop();
         Double y = this.myStack.pop();
 
@@ -96,7 +76,7 @@ public class CalculatorModel {
     /*
     Multiply seed 1 and seed 2, pops them and pushes the result.
     */
-    private void multiply(){
+    private void multiply() {
         Double x = this.myStack.pop();
         Double y = this.myStack.pop();
 
@@ -106,7 +86,7 @@ public class CalculatorModel {
     /*
     Divides seed 1 by seed 2, pops both and pushes the result.
     */
-    private void divide(){
+    private void divide() {
         Double x = this.myStack.pop();
         Double y = this.myStack.pop();
 
@@ -116,7 +96,7 @@ public class CalculatorModel {
     /*
     Turns seed 1 into -(seed 1).
     */
-    private void opposite(){
+    private void opposite() {
         Double x = this.myStack.pop();
         
         this.myStack.push(-x);
@@ -135,14 +115,14 @@ public class CalculatorModel {
     /*
     Drops the top of the pile but doesn't.
     */
-    private void drop(){
+    private void drop() {
         this.myStack.pop();
     }
 
     /*
     Swaps seed 1 and seed 2.
     */
-    private void swap(){
+    private void swap() {
         Double x = this.myStack.pop();
         Double y = this.myStack.pop();
 
@@ -153,7 +133,7 @@ public class CalculatorModel {
     /*
     Clears the stack.
     */
-    private void clear(){
+    private void clear() {
         this.myStack = new Stack<>();
     }
 }
