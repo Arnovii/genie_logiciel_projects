@@ -1,58 +1,48 @@
-// ===== src/model/CalculatorModelInterface.java ===== 
-
 package model;
 
-import java.util.Stack;
-
+/**
+ * Operations of the RPN calculator model.
+ * The model holds an accumulator (the current number) and a stack (the memory).
+ */
 public interface CalculatorModelInterface {
 
-    /*
-    Gets the current state of the stack.
-    */
-    Stack<Double> getStack();
+    /**
+     * Puts a typed number in the accumulator.
+     *
+     * @param value the number typed by the user
+     */
+    void setAccu(double value);
 
-    /*
-    Adds seeds 1 and 2, pops them and pushes the result.
-    */
+    /** Adds the two operands; the result goes to the accumulator. */
     void add();
 
-    /*
-    Substract seed 2 from seed 1, pops them and pushes the result.
-    */
+    /** Subtracts the newest operand from the oldest one ("10 4 -" gives 6). */
     void substract();
 
-    /*
-    Multiply seed 1 and seed 2, pops them and pushes the result.
-    */
+    /** Multiplies the two operands; the result goes to the accumulator. */
     void multiply();
 
-    /*
-    Divides seed 1 by seed 2, pops both and pushes the result.
-    */
+    /** Divides the oldest operand by the newest one ("10 4 /" gives 2.5). */
     void divide();
 
-    /*
-    Turns seed 1 into -(seed 1).
-    */
+    /** Changes the sign of the operand. */
     void opposite();
 
-    /*
-    Pops seed 1. 
-    */
-    Double pop();
+    /** Moves the accumulator to the top of the stack. */
+    void push();
 
-    /*
-    Drops the top of the pile but doesn't.
-    */
+    /** Moves the top of the stack to the accumulator. */
+    void pop();
+
+    /** Removes the top of the stack. */
     void drop();
 
-    /*
-    Swaps seed 1 and seed 2.
-    */
+    /** Swaps the two numbers on top of the stack. */
     void swap();
 
-    /*
-    Clears the stack.
-    */
+    /** Empties the accumulator. */
     void clear();
-    }
+
+    /** Empties the stack. */
+    void dropAll();
+}
