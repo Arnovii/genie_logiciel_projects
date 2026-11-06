@@ -1,18 +1,40 @@
-## Getting Started
+# Switching Between GUI and Console Mode
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This project has two entry points that share the same **Model** and **Controller**. The only difference is the **View**:
 
-## Folder Structure
+- `App.java` → Graphical interface (`CalculatorGUI`).
+- `Main.java` → Console interface (`CalculatorConsoleView`).
 
-The workspace contains two folders by default, where:
+This demonstrates the **MVC (Model-View-Controller)** architecture: the same application logic can work with different user interfaces.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Dependencies: JavaFX 27 (Windows x64)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+1. Download [JavaFX 27](https://gluonhq.com/products/javafx/#downloads).
+2. Select the following options:
+   - Version: **JavaFX 27**
+   - Operating System: **Windows**
+   - Architecture: **x64**
+   - Type: **SDK** (not jmods).
+3. Extract the downloaded archive.
+4. Move the `javafx-sdk-27...` folder to `C:\` and rename it to exactly `javafx-sdk-27`.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Configure JavaFX (One-Time Setup)
 
-## Dependency Management
+Open PowerShell and run:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+```powershell
+setx JDK_JAVA_OPTIONS "--module-path C:\javafx-sdk-27\lib --add-modules javafx.controls --enable-native-access=javafx.graphics"
+```
+
+Restart PowerShell after running the command.
+
+Running the Application
+Open PowerShell in the project directory.
+
+GUI Mode:
+```java .\App.java```
+
+Console Mode:
+```java .\Main.java```
+
+
